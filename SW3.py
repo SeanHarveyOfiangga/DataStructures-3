@@ -46,7 +46,7 @@
 
 #intro
 def intro():
-    print("Welcome to Contact Tracing Program!")
+    print("\033[01m\033[30m\033[47mWelcome to Contact Tracing Program!\033[0m")
 intro()
 
 
@@ -54,51 +54,51 @@ intro()
 allcontactinfo = {}
 def main():
     # Menu
-    print("""\n========= MENU =========
-    1 -> Add an item
-    2 -> Search
-    3 -> Exit 
-========================""")                              
+    print("""\n\033[01m========= MENU =========\033[0m
+    \033[31m\033[01m1 -> Add an item\033[0m
+    \033[32m\033[01m2 -> Search\033[0m
+    \033[33m\033[01m3 -> Exit \033[0m
+\033[01m========================\033[0m""")                              
     while True:
         # User choice on menu
-        user = int(input("\nWhat do you want to do?: "))
+        user = int(input("\n\033[36mWhat do you want to do?: \033[0m"))
         # Option 1
         if user == 1:
-            print("\n**********************************************************")
-            username = input("           Please pick a unique username: ")
+            print("\n\033[01m**********************************************************\033[0m")
+            username = input("           \033[35mPlease pick a unique username: \033[0m")
             global info
-            name = input("\nEnter your name: ")
-            age = input("Enter your age: ")
-            address = input("Enter your address: ")
-            contact = input("Enter your contact number: ")
-            info =f"""\nName : {name}
-Age : {age}
-Address : {address}
-Contact Number : {contact}"""
+            name = input("\nEnter your \033[01m\033[31mname: \033[0m")
+            age = input("Enter your \033[01m\033[32mage: \033[0m")
+            address = input("Enter your \033[01m\033[33maddress: \033[0m")
+            contact = input("Enter your contact \033[01m\033[34mnumber: \033[0m")
+            info =f"""\n\033[01m\033[31mName \033[0m:\033[0m {name}\033[0m
+\033[01m\033[32mAge \033[0m:\033[0m {age}\033[0m
+\033[01m\033[33mAddress \033[0m:\033[0m {address}\033[0m
+\033[01m\033[34mContact Number \033[0m:\033[0m {contact}\033[0m"""
             newcontactinfo = {
                 (f"{username}") : info 
             }
             allcontactinfo.update(newcontactinfo)
-            print(f"\n========= The username '{username}' has been added successfully! =========")
+            print(f"\n\033[01m\033[30m\033[42m========= The username '{username}' has been added successfully! =========\033[0m")
             main()
         # Option 2    
         elif user == 2:
-            find = input("\nPlease enter your username: ")
+            find = input("\n\033[35mPlease enter your username: \033[0m")
             for key in allcontactinfo:
                 if key == find:    
-                    print(f"\n========= Here are all the informations under the username '{find}': =========")
+                    print(f"\n\033[01m\033[43m\033[30m========= Here are all the informations under the username '{find}': =========\033[0m")
                     print(allcontactinfo.get(find))
                     print("\n==============================================================================")
                     main()
             else:
-                print(f"\n========= There is no '{find}' in our system =========")
+                print(f"\n\033[01m\033[43m\033[30m========= There is no '{find}' in our system =========\033[0m")
                 main()
         # Option 3
         elif user == 3:
             while True:
-                ext = input("\nAre you sure that you want to exit? (y/n): ").lower()
+                ext = input("\n\033[47mAre you sure that you want to exit? \033[0m(\033[32my\033[0m/\033[31mn\033[0m): ").lower()
                 if ext == "y":
-                    print("\nThank you for using the Contact Tracing Program, bye! :)")
+                    print("\n\033[01m\033[30m\033[47mThank you for using the Contact Tracing Program, bye! :)\033[0m")
                     exit()
                 elif ext == "n":
                     main()
