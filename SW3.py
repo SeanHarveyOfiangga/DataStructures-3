@@ -49,13 +49,35 @@ def intro():
     print("Welcome to Contact Tracing Program!")
 intro()
 
-# Menu
 
-def menu():
+# Codes for the commands
+allcontactinfo = {}
+def main():
     print("""\n=========================== MENU ==========================
     1 -> Add an item
     2 -> Search
     3 -> Exit (y/n)
 ===========================================================""")
-menu()
+    user = int(input("What do you want to do?: "))
+    if user == 1:
+        username = input("Please pick a unique username: ")
+        info = {
+            "Name" : input("Enter your name: "),
+            "Age" : input("Enter your age: "),
+            "Address" : input("Enter your address: "),
+            "Contact Number" : input("Enter your contact number: ")
+            }
+        newcontactinfo = {
+            (f"{username}") : info 
+        }
+        allcontactinfo.update(newcontactinfo)
+        print(f"The username {username} has been added successfully!")
+        print(len(allcontactinfo))
+        for key in allcontactinfo:
+            print(key)
+        main()
+            
+main()
+        
+
 
