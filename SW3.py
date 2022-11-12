@@ -65,6 +65,7 @@ def main():
         # Option 1
         if user == 1:
             username = input("Please pick a unique username: ")
+            global info
             info = {
                 "Name" : input("Enter your name: "),
                 "Age" : input("Enter your age: "),
@@ -80,7 +81,9 @@ def main():
         # Option 2    
         elif user == 2:
             find = input("Please enter your username: ")
-            print(f"Here are the informations under the username {find}: ", allcontactinfo.get(find))
+            print(f"Here are the informations under the username '{find}': ")
+            for key, value in info.items():
+                print(key," : ",value )
             main()
         # Option 3
         elif user == 3:
