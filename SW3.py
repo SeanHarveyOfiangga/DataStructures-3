@@ -72,11 +72,11 @@ def main():
         }
         allcontactinfo.update(newcontactinfo)
         print(f"The username {username} has been added successfully!")
-        print(len(allcontactinfo))
-        for key in allcontactinfo:
-            print(key)
         main()
-            
+    elif user == 2:
+        find = input("Please enter your username: ")
+        print(f"Here are the informations under the username {find}: ", allcontactinfo.get(find))
+        main()
 main()
         
 
