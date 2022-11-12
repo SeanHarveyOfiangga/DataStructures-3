@@ -58,37 +58,38 @@ def main():
     1 -> Add an item
     2 -> Search
     3 -> Exit 
-========================""")
-    # User choice on menu
-    user = int(input("\nWhat do you want to do?: "))                              
+========================""")                              
     while True:
+        # User choice on menu
+        user = int(input("\nWhat do you want to do?: "))
         # Option 1
         if user == 1:
             print("\n**********************************************************")
             username = input("           Please pick a unique username: ")
             global info
-            info = {
-                "Name" : input("\nEnter your name: "),
-                "Age" : input("Enter your age: "),
-                "Address" : input("Enter your address: "),
-                "Contact Number" : input("Enter your contact number: ")
-                }
+            name = input("\nEnter your name: ")
+            age = input("Enter your age: ")
+            address = input("Enter your address: ")
+            contact = input("Enter your contact number: ")
+            info =f"""\nName : {name}
+Age : {age}
+Address : {address}
+Contact Number : {contact}"""
             newcontactinfo = {
                 (f"{username}") : info 
             }
             allcontactinfo.update(newcontactinfo)
-            print(f"\n========= The username {username} has been added successfully! =========")
+            print(f"\n========= The username '{username}' has been added successfully! =========")
             main()
         # Option 2    
         elif user == 2:
-            keys = allcontactinfo.keys()
-            find = input("\nPlease enter your username: ")    
-            if keys == find:
-                print(f"\n========= Here are all the informations under the username '{find}': =========")
-                for key, value in info.items():
-                    print(key,":",value )
+            find = input("\nPlease enter your username: ")
+            for key in allcontactinfo:
+                if key == find:    
+                    print(f"\n========= Here are all the informations under the username '{find}': =========")
+                    print(allcontactinfo.get(find))
                     print("\n==============================================================================")
-                main()
+                    main()
             else:
                 print(f"\n========= There is no '{find}' in our system =========")
                 main()
