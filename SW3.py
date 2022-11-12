@@ -53,30 +53,48 @@ intro()
 # Codes for the commands
 allcontactinfo = {}
 def main():
+    # Menu
     print("""\n=========================== MENU ==========================
     1 -> Add an item
     2 -> Search
-    3 -> Exit (y/n)
+    3 -> Exit 
 ===========================================================""")
-    user = int(input("What do you want to do?: "))
-    if user == 1:
-        username = input("Please pick a unique username: ")
-        info = {
-            "Name" : input("Enter your name: "),
-            "Age" : input("Enter your age: "),
-            "Address" : input("Enter your address: "),
-            "Contact Number" : input("Enter your contact number: ")
+    # User choice on menu
+    user = int(input("What do you want to do?: "))                              
+    while True:
+        # Option 1
+        if user == 1:
+            username = input("Please pick a unique username: ")
+            info = {
+                "Name" : input("Enter your name: "),
+                "Age" : input("Enter your age: "),
+                "Address" : input("Enter your address: "),
+                "Contact Number" : input("Enter your contact number: ")
+                }
+            newcontactinfo = {
+                (f"{username}") : info 
             }
-        newcontactinfo = {
-            (f"{username}") : info 
-        }
-        allcontactinfo.update(newcontactinfo)
-        print(f"The username {username} has been added successfully!")
-        main()
-    elif user == 2:
-        find = input("Please enter your username: ")
-        print(f"Here are the informations under the username {find}: ", allcontactinfo.get(find))
-        main()
+            allcontactinfo.update(newcontactinfo)
+            print(f"The username {username} has been added successfully!")
+            main()
+        # Option 2    
+        elif user == 2:
+            find = input("Please enter your username: ")
+            print(f"Here are the informations under the username {find}: ", allcontactinfo.get(find))
+            main()
+        # Option 3
+        elif user == 3:
+            while True:
+                ext = input("Are you sure that you want to exit? (y/n): ").lower()
+                if ext == "y":
+                    print("Thank you for using the Contact Tracing Program, bye! :)")
+                    exit()
+                elif ext == "n":
+                    main()
+                else:
+                    continue
+        else:
+            continue                   
 main()
         
 
