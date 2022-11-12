@@ -54,20 +54,21 @@ intro()
 allcontactinfo = {}
 def main():
     # Menu
-    print("""\n=========================== MENU ==========================
+    print("""\n========= MENU =========
     1 -> Add an item
     2 -> Search
     3 -> Exit 
-===========================================================""")
+========================""")
     # User choice on menu
-    user = int(input("What do you want to do?: "))                              
+    user = int(input("\nWhat do you want to do?: "))                              
     while True:
         # Option 1
         if user == 1:
-            username = input("Please pick a unique username: ")
+            print("\n**********************************************************")
+            username = input("           Please pick a unique username: ")
             global info
             info = {
-                "Name" : input("Enter your name: "),
+                "Name" : input("\nEnter your name: "),
                 "Age" : input("Enter your age: "),
                 "Address" : input("Enter your address: "),
                 "Contact Number" : input("Enter your contact number: ")
@@ -76,21 +77,27 @@ def main():
                 (f"{username}") : info 
             }
             allcontactinfo.update(newcontactinfo)
-            print(f"The username {username} has been added successfully!")
+            print(f"\n========= The username {username} has been added successfully! =========")
             main()
         # Option 2    
         elif user == 2:
-            find = input("Please enter your username: ")
-            print(f"Here are the informations under the username '{find}': ")
-            for key, value in info.items():
-                print(key," : ",value )
-            main()
+            keys = allcontactinfo.keys()
+            find = input("\nPlease enter your username: ")    
+            if keys == find:
+                print(f"\n========= Here are all the informations under the username '{find}': =========")
+                for key, value in info.items():
+                    print(key,":",value )
+                    print("\n==============================================================================")
+                main()
+            else:
+                print(f"\n========= There is no '{find}' in our system =========")
+                main()
         # Option 3
         elif user == 3:
             while True:
-                ext = input("Are you sure that you want to exit? (y/n): ").lower()
+                ext = input("\nAre you sure that you want to exit? (y/n): ").lower()
                 if ext == "y":
-                    print("Thank you for using the Contact Tracing Program, bye! :)")
+                    print("\nThank you for using the Contact Tracing Program, bye! :)")
                     exit()
                 elif ext == "n":
                     main()
